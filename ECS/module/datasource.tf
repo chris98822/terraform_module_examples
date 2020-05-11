@@ -1,0 +1,70 @@
+data "aws_caller_identity" "current" {
+}
+
+#data "terraform_remote_state" "vpc" {
+#  backend = "s3"
+
+#  config {
+#    bucket = "terragrunt-state-${data.aws_caller_identity.current.account_id}"
+#    key    = "terraform.tfstate"
+#    region = "us-east-1"
+#  }
+#}
+
+### Security Groups
+
+### Certificates
+
+### Subnets
+data "aws_subnet" "private-az1" {
+  filter {
+    name   = "tag:Name"
+    values = ["${var.stage}-vpc-private-${var.aws_region}a"]
+  }
+}
+
+data "aws_subnet" "private-az2" {
+  filter {
+    name   = "tag:Name"
+    values = ["${var.stage}-vpc-private-${var.aws_region}b"]
+  }
+}
+
+data "aws_subnet" "private-az3" {
+  filter {
+    name   = "tag:Name"
+    values = ["${var.stage}-vpc-private-${var.aws_region}c"]
+  }
+}
+
+data "aws_subnet" "public-az1" {
+  filter {
+    name   = "tag:Name"
+    values = ["${var.stage}-vpc-public-${var.aws_region}a"]
+  }
+}
+
+data "aws_subnet" "public-az2" {
+  filter {
+    name   = "tag:Name"
+    values = ["${var.stage}-vpc-public-${var.aws_region}b"]
+  }
+}
+
+data "aws_subnet" "public-az3" {
+  filter {
+    name   = "tag:Name"
+    values = ["${var.stage}-vpc-public-${var.aws_region}c"]
+  }
+}
+
+### Zones
+
+### VPC
+data "aws_vpc" "vpc" {
+  filter {
+    name   = "tag:Name"
+    values = ["${var.stage}-vpc"]
+  }
+}
+

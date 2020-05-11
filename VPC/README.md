@@ -1,8 +1,11 @@
+# VPC Module 
+
+## Summary
 The main.tf file in the root of this directory is the recipe file. It holds the variables and options set for the specific VPC being deployed. This recipe file will call the module and apply it's specific values to create the required resources.
 
 The module itself will be responsible for creating a fully functional and featured VPC. The module follows AWS' recommendation for a Well Architected Framework.
 
-Resources Created:
+## Created Resources
 - VPC
 - DHCP Options set
 - Internet Gateway

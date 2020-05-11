@@ -1,5 +1,4 @@
     #Global Values
-    source            = ./module
     stage             = var.stage
     image             = "${data.aws_caller_identity.current.account_id}.dkr.ecr.us-west-2.amazonaws.com/${var.product}-${var.sdlc}:latest"
     dd_image          = "${data.aws_caller_identity.current.account_id}.dkr.ecr.us-west-2.amazonaws.com/datadog:latest"

@@ -28,7 +28,7 @@ Examples:
 - ECS Cluster:  company-product-cluster-prod
 - Load Balancer Sec. Group: company-product-alb-sg-prod
 
-## Multiplpe Variable Files
+## Multiple Variable Files
 In the case where multiple deployments of the same resource module is needed and require different variables a .tfvars file may be used
 
 Notice we have a customer-1 and customer-2 tfvars file. Each may contain unique values depending on the requirement of the architecture. Otherwise, values may be set globally to apply to all deployments at the variables.tf file.

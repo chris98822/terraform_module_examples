@@ -5,6 +5,8 @@ The main.tf file in the root of this directory is the recipe file. It holds the 
 
 The module itself will be responsible for creating a fully functional and featured VPC. The module follows AWS' recommendation for a Well Architected Framework.
 
+The module folder contains both terraform 0.11.x and 0.12.x compatible versions.
+
 ## Created Resources
 - VPC
 - DHCP Options set

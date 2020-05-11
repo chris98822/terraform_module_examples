@@ -1,9 +1,8 @@
-#variable "aws_region" {
-#   default =   "us-west-2"
-#}
+variable "aws_region" {
+  default =   "us-west-2"
+}
 
 variable "company" {
-  description = "Comany variable for naming."
   default = "company_name"
 }
 

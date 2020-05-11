@@ -1,20 +1,6 @@
 data "aws_caller_identity" "current" {
 }
 
-#data "terraform_remote_state" "vpc" {
-#  backend = "s3"
-
-#  config {
-#    bucket = "terragrunt-state-${data.aws_caller_identity.current.account_id}"
-#    key    = "terraform.tfstate"
-#    region = "us-east-1"
-#  }
-#}
-
-### Security Groups
-
-### Certificates
-
 ### Subnets
 data "aws_subnet" "private-az1" {
   filter {
@@ -57,8 +43,6 @@ data "aws_subnet" "public-az3" {
     values = ["${var.stage}-vpc-public-${var.aws_region}c"]
   }
 }
-
-### Zones
 
 ### VPC
 data "aws_vpc" "vpc" {

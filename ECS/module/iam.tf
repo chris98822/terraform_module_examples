@@ -1,7 +1,4 @@
-#################
-#    IAM user   #
-#################
-
+#  IAM user
 resource "aws_iam_user" "ecs_user" {
   name = "${var.company}_${var.product}_${var.sdlc}"
 }
@@ -11,15 +8,11 @@ resource "aws_iam_user_policy_attachment" "ecs_user" {
   policy_arn = aws_iam_policy.ecs_service_role_policy.arn
 }
 
-#################
-#  ECS Service  #
-#################
 
+#  ECS Service
 resource "aws_iam_role" "task_service_role" {
   name               = "${var.company}-${var.product}-task-${var.sdlc}"
   assume_role_policy = data.aws_iam_policy_document.ecs_assume_role_policy.json
-  # aws_service_name = "ecs.amazonaws.com"
-  # custom_suffix = "ECSRole-papi-${var.sdlc}"
 }
 
 data "aws_iam_policy_document" "ecs_service_policy" {
@@ -132,9 +125,7 @@ resource "aws_iam_role_policy_attachment" "service_policy" {
   policy_arn = aws_iam_policy.service_policy.arn
 }
 
-#################
-# ECS Execution #
-#################
+# ECS Execution
 resource "aws_iam_role" "ecs_execution_role" {
   name               = "${var.company}-${var.product}-execution-${var.sdlc}"
   assume_role_policy = data.aws_iam_policy_document.ecs_assume_role_policy.json

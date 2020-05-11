@@ -24,19 +24,6 @@ resource "aws_alb_target_group" "app" {
   }
 }
 
-# Redirect all traffic from the ALB to the target group
-#resource "aws_alb_listener" "front_end" {
-#  load_balancer_arn = "${aws_alb.main.id}"
-#  port              = "${var.app_port}"
-#  protocol          = "HTTPS"
-#  ssl_policy        = "ELBSecurityPolicy-2016-08"
-#  certificate_arn   = "${aws_acm_certificate.cert_arn.id}"
-
-#  default_action {
-#    target_group_arn = "${aws_alb_target_group.app.id}"
-#    type             = "forward"
-#  }
-#}
 resource "aws_alb_listener" "redirect_80" {
   load_balancer_arn = aws_alb.main.id
   port              = "80"
@@ -55,24 +42,6 @@ resource "aws_alb_listener" "redirect_80" {
   }
 }
 
-/*
-resource "aws_alb_listener" "redirect_443" {
-  load_balancer_arn = "${aws_alb.main.id}"
-  port              = "443"
-  protocol          = "HTTPS"
-  certificate_arn   = "${aws_acm_certificate.cert_arn.id}"
-
-  default_action {
-    type = "redirect"
-
-    redirect {
-      port        = "3000"
-      protocol    = "HTTPS"
-      status_code = "HTTP_301"
-    }
-  }
-}
-*/
 resource "aws_alb_listener" "front_end_443" {
   load_balancer_arn = aws_alb.main.id
   port              = "443"
